@@ -92,12 +92,16 @@ dump.rdb
 # related ecosystem.
 ################################################
 lib-cov
+coverage
 *.seed
+logs
 *.log
 *.out
+pids
 *.pid
 npm-debug.log
-
+build/Release
+node_modules
 
 
 
@@ -116,3 +120,4 @@ npm-debug.log
 nbproject
 .idea
 .node_history
+.grunt
