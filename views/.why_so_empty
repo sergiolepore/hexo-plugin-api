@@ -1,0 +1,6 @@
+This project is intended to be a JSON API. No need to use HTML views.
+If you are looking for the visible part of the platform, take a look at
+
+    https://github.com/sergiolepore/hexo-plugin-site
+
+which is a single page application built on Ember.js.

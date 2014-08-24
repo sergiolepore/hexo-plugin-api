@@ -17,22 +17,23 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+  models: {
+    connection: 'mongoProduction'
+  },
 
   /***************************************************************************
-   * Set the port in the production environment to 80                        *
+   * Set the port in the production environment to 8080                      *
    ***************************************************************************/
 
-  // port: 80,
+  // routed to 80 with nginx proxy
+  port: 8080,
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
    ***************************************************************************/
 
-  // log: {
-  //   level: "silent"
-  // }
+  log: {
+    level: "silent"
+  }
 
 };
