@@ -1,0 +1,40 @@
+registered users
+    -> publish new plugins
+        -> via web interface
+        -> via hexo-plugin-manager
+    -> unpublish own plugins
+        -> via web interface
+        -> via hexo-plugin-manager
+
+all
+    -> browse plugins on web interface
+    -> install via hexo-plugin-manager
+    -> disable/remove via hexo-plugin-manager
+
+background process (maybe not):
+    -> queue packages where lastChecked == null || lastChecked < XTime
+    -> use npm-registry-client to fetch package info
+        -> new release?
+            -> update plugin info locally
+            -> check for plugin compatibility
+
+without background proc:
+    -> npm publish
+        -> 'postpublish' on package.json --> hxp publish
+        -> or manually hxp publish
+    -> server receives new version
+        -> use npm-registry-client to fetch package info
+        -> new release?
+            -> check for plugin compatibility (fetching a dotfile from github containing platform info)
+            -> update plugin info locally (from registry and dotfile)
+                -> use 'keywords' data from registry for Tag.name
+
+
+metadata file:
+
+hexoplugin.json
+
+{
+    "hexo": "2.8.2",
+    ""
+}
