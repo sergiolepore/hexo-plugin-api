@@ -20,14 +20,12 @@ module.exports = {
       required: true,
       unique: true
     },
-    github: {
-      type: 'string'
-    },
-    npmjs: {
-      type: 'string'
-    },
-    website: {
-      type: 'string'
+    githubProfile: 'string',
+    npmProfile: 'string',
+    website: 'string',
+    plugins: {
+      collection: 'Plugin',
+      via: 'user'
     },
 
     toJSON: function() {
