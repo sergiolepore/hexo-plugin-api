@@ -1,16 +1,15 @@
 /**
-* User.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
-*/
-
-var bcrypt = require('bcrypt');
+ * User
+ *
+ * @module      :: Model
+ * @description :: This is the base user model
+ * @docs        :: http://waterlock.ninja/documentation
+ */
 
 module.exports = {
   schema: true,
 
-  attributes: {
+  attributes: require('waterlock').models.user.attributes({
     name: {
       type: 'string',
       required: true
@@ -21,38 +20,29 @@ module.exports = {
       required: true,
       unique: true
     },
-    salt: {
-      type: 'string',
+    github: {
+      type: 'string'
     },
-    password: {
-      type: 'string',
-      minLength: 6,
-      required: true
+    npmjs: {
+      type: 'string'
+    },
+    website: {
+      type: 'string'
     },
 
     toJSON: function() {
       var obj = this.toObject();
 
-      delete obj.salt;
+      // inherited from waterlock
       delete obj.password;
+      delete obj.attempts;
+      delete obj.jsonWebTokens;
+      delete obj.auth;
 
       return obj;
     }
-  },
-
-  beforeCreate: function(values, next) {
-    bcrypt.genSalt(10, function(err, salt) {
-      if (err) return next(err);
-
-      bcrypt.hash(values.password, salt, function(err, hash) {
-        if (err) return next(err);
-
-        values.salt = salt;
-        values.password = hash;
-
-        next();
-      });
-    });
-  }
+  }),
+  
+  beforeCreate: require('waterlock').models.user.beforeCreate,
+  beforeUpdate: require('waterlock').models.user.beforeUpdate
 };
-

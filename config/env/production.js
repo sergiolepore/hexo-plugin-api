@@ -26,7 +26,7 @@ module.exports = {
    ***************************************************************************/
 
   // routed to 80 with nginx proxy
-  port: 8080,
+  port: process.env.PORT || 8080,
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
