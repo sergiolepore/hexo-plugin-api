@@ -1,8 +1,7 @@
 /**
- * TagController
+ * PluginInstallationController
  *
- * @module      :: Controller
- * @description :: Server-side logic for managing tags
+ * @description :: Server-side logic for managing Plugininstallations
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
