@@ -1,5 +1,8 @@
 # hexo-plugin-api
 
+[![Dependency Status](https://gemnasium.com/sergiolepore/hexo-plugin-api.svg)](https://gemnasium.com/sergiolepore/hexo-plugin-api)
+
+
 ## IMPORTANT
 
 __Use nodejs <= v0.10.x__
