@@ -1,0 +1,358 @@
+[
+    {
+        "name": "William Hartnell",
+        "email": "first_doctor@bbc.com",
+        "githubProfile": "first_doctor",
+        "npmProfile": "first_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 1",
+                "packageName": "demo-plugin-1",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Patrick Troughton",
+        "email": "second_doctor@bbc.com",
+        "githubProfile": "second_doctor",
+        "npmProfile": "second_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 2",
+                "packageName": "demo-plugin-2",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Jon Pertwee",
+        "email": "third_doctor@bbc.com",
+        "githubProfile": "third_doctor",
+        "npmProfile": "third_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 3",
+                "packageName": "demo-plugin-3",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Tom Baker",
+        "email": "fourth_doctor@bbc.com",
+        "githubProfile": "fourth_doctor",
+        "npmProfile": "fourth_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 4",
+                "packageName": "demo-plugin-4",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Peter Davison",
+        "email": "fifth_doctor@bbc.com",
+        "githubProfile": "fifth_doctor",
+        "npmProfile": "fifth_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 5",
+                "packageName": "demo-plugin-5",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Colin Baker",
+        "email": "sixth_doctor@bbc.com",
+        "githubProfile": "sixth_doctor",
+        "npmProfile": "sixth_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 6",
+                "packageName": "demo-plugin-6",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Sylvester McCoy",
+        "email": "seventh_doctor@bbc.com",
+        "githubProfile": "seventh_doctor",
+        "npmProfile": "seventh_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 7",
+                "packageName": "demo-plugin-7",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Paul McGann",
+        "email": "eighth_doctor@bbc.com",
+        "githubProfile": "eighth_doctor",
+        "npmProfile": "eighth_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 8",
+                "packageName": "demo-plugin-8",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Christopher Eccleston",
+        "email": "ninth_doctor@bbc.com",
+        "githubProfile": "ninth_doctor",
+        "npmProfile": "ninth_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 9",
+                "packageName": "demo-plugin-9",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "David Tennant",
+        "email": "tenth_doctor@bbc.com",
+        "githubProfile": "tenth_doctor",
+        "npmProfile": "tenth_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 10",
+                "packageName": "Demo Plugin 10",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Matt Smith",
+        "email": "eleventh_doctor@bbc.com",
+        "githubProfile": "eleventh_doctor",
+        "npmProfile": "eleventh_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 11",
+                "packageName": "demo-plugin-11",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Peter Capaldi",
+        "email": "twelfth_doctor@bbc.com",
+        "githubProfile": "twelfth_doctor",
+        "npmProfile": "twelfth_doctor",
+        "website": "http://www.doctorwho.tv/",
+        "donationsUrl": "",
+        "plugins": [
+            {
+                "name": "Demo Plugin 12",
+                "packageName": "demo-plugin-12",
+                "readme": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt maximus feugiat. Etiam lacinia nibh quis eros auctor hendrerit. Nullam fermentum finibus iaculis. Vestibulum sit amet vehicula lectus. Phasellus lobortis sodales lectus nec tempor. Donec ut laoreet enim. Nulla aliquam fringilla ante, vitae gravida augue gravida et. Nam fermentum venenatis.",
+                "repositoryUrl": "",
+                "website": "http://www.doctorwho.tv/",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Sergio Lepore",
+        "email": "sergio.d.lepore@gmail.com",
+        "githubProfile": "sergiolepore",
+        "npmProfile": "sergiolepore",
+        "website": "http://www.sergiolepore.net/",
+        "donationsUrl": "https://gittip.com/sergiolepore/",
+        "plugins": [
+            {
+                "name": "Hexo Emojis",
+                "packageName": "hexo-tag-emojis",
+                "readme": "## Introduction\n\nThis is a [hexo](https://github.com/tommy351/hexo) tag plugin which allows you to insert [emojis](http://www.emoji-cheat-sheet.com/) on your blog posts.\n\n\n![](http://i5.minus.com/jg8SnLgAwUiSZ.png)\n\n![](http://i6.minus.com/jbrvBIzuuV2FSz.png)\n\n\n## Plugin installation\n\nRun the following command in the root directory of hexo:\n\n```\nnpm install hexo-tag-emojis --save\n```\n\nAnd enable the plugin in your `_config.yml`.\n\n```\nplugins:\n  - hexo-tag-emojis\n```\n\n## Assets configuration\n\n__Heads up!__\n\nThe following methods will define the way that emojis assets will be served to the client. You can only use one method at a time, choose wisely!\n\n#### Local installation\n\nThis plugin comes with all emoji images from [emoji-cheat-sheet.com repository](https://github.com/arvida/emoji-cheat-sheet.com). Before using them, you need to deploy the emoji images on your Hexo blog.\n\nFirst, open your `_config.yml` file and paste the following lines:\n\n```\n# hexo-tag-emojis plugin configuration\nemojis:\n  image_dir: images/emojis\n```\n\nThen run this command:\n\n```\nhexo emojis install\n```\n\nTo uninstall:\n\n```\nhexo emojis remove\n```\n\n#### CDN (Content Delivery Network)\n\nYou can avoid installing the assets on your blog and use a emoji CDN, like `http://cdn.staticfile.org/emojify.js/0.9.0/emojis`\n\nOpen your `_config.yml` file and paste the following:\n\n```\n# hexo-tag-emojis plugin configuration\nemojis:\n  cdn: http://cdn.staticfile.org/emojify.js/0.9.0/emojis\n```\n\nThis is particularly useful if your blog is hosted on Github, because sometimes it can be really slow with images.\nIf you choose this method, you don't need to include the `image_dir` configuration.\n\n\n## Usage\n\n#### Method 1 - Inline emoji\n\n```\n{% emoji [emojiNameWithoutColons] [emojiSize] [class1,class2,class3] %}\n```\n\nExample:\n\n```\n{% emoji heart 32 custom_class1,custom_class2 %}\n```\n\nWill generate the following HTML:\n\n```\n<img width=\"32\" height=\"32\" class=\"emoji nofancybox custom_class1 custom_class2\" title=\"heart\" src=\"/images/emojis/heart.png\">\n```\n\n__Heads up!__\n\n* `emojiSize` defaults to 20.\n* Classes must be comma-separated and without spaces between them.\n* `emoji` and `nofancybox` classes are added automatically.\n\n\n\n#### Method 2 - Emoji block\n\nThis is the best choice if you want to process a whole paragraph.\n\n```\n{% emoji-block [emojiSize] [class1,class2,class3] %}\n    Lorem ipsum dolor sit amet :emojiName:\n    consectetur  adipisicing elit :anotherEmojiName:\n{% endemoji-block %}\n```\n\nExample:\n\n```\n{% emoji-block %}\n    Lorem ipsum dolor sit amet :smiley:\n    consectetur  adipisicing elit :boom:\n{% endemoji-block %}\n```\n\n\n[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sergiolepore/hexo-tag-emojis/trend.png)](https://bitdeli.com/free \"Bitdeli Badge\")\n\n",
+                "repositoryUrl": "https://github.com/sergiolepore/hexo-tag-emojis.git",
+                "website": "https://github.com/sergiolepore/hexo-tag-emojis",
+                "lastModified": "2014-08-20T15:02:27.844Z",
+                "tags": [
+                    {
+                        "name": "emojis"
+                    }, 
+                    {
+                        "name": "emoticons"
+                    },
+                    {
+                        "name": "smileys"
+                    }
+                ],
+                "versions": [
+                    {
+                        "number": "1.0.0",
+                        "time": "2013-10-22T05:41:29.191Z",
+                        "hexoVersion": "2.4.0"
+                    },
+                    {
+                        "number": "1.0.1",
+                        "time": "2013-10-22T05:53:17.403Z",
+                        "hexoVersion": "2.4.0"
+                    },
+                    {
+                        "number": "1.1.0",
+                        "time": "2013-11-28T02:52:07.961Z",
+                        "hexoVersion": "2.4.0"
+                    },
+                    {
+                        "number": "1.1.1",
+                        "time": "2014-05-06T01:24:59.078Z",
+                        "hexoVersion": "2.8.2"
+                    },
+                    {
+                        "number": "1.1.2",
+                        "time": "2014-08-20T15:02:27.844Z",
+                        "hexoVersion": "2.8.2"
+                    }
+                ]
+            }
+        ]
+    }
+]
