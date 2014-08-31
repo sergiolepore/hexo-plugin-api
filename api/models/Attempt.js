@@ -10,9 +10,5 @@ module.exports = {
 
   attributes: require('waterlock').models.attempt.attributes({
     
-    /* e.g.
-    nickname: 'string'
-    */
-    
   })
 };

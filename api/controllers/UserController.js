@@ -23,7 +23,7 @@ module.exports = require('waterlock').actions.user({
 
     User.create(userObj).exec(function(err, user) {
       if (err) {
-        waterlock.logger.debug(err);
+        sails.log.error(err);
 
         return res.serverError(err);
       }
@@ -33,23 +33,23 @@ module.exports = require('waterlock').actions.user({
 
       waterlock.engine.attachAuthToUser(auth, user, function(err) {
         if (err) {
-          waterlock.logger.debug(err);
+          sails.log.error(err);
 
           return res.serverError(err);
         }
 
         user.save(function(err, user) {
           if (err) {
-            sailsLog('err', err);
+            sails.log.error(err);
 
             return req.serverError(err);
           }
 
-          waterlock.logger.debug('user login success');
+          sails.log.info('User login success');
 
           return res.ok(user);
-        })
-      })
-    })
+        });
+      });
+    });
   }
 });
