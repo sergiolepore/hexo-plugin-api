@@ -33,6 +33,16 @@ module.exports = {
     },
 
     /**
+     * Long description
+     * 
+     * @type String
+     * @example "Lorem ipsum dolor sit amet..."
+     */
+    readme: {
+      type: 'text'
+    },
+
+    /**
      * Public repo URL.
      *
      * @type String

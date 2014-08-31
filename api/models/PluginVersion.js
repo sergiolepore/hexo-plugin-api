@@ -21,6 +21,16 @@ module.exports = {
     },
 
     /**
+     * Creation time for this version.
+     * 
+     * @type String
+     * @example "2013-10-22T05:41:29.191Z"
+     */
+    time: {
+      type: 'datetime'
+    },
+
+    /**
      * Hexo version support.
      *
      * @type String

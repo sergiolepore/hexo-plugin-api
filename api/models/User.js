@@ -88,6 +88,7 @@ module.exports = {
       delete obj.attempts;
       delete obj.jsonWebTokens;
       delete obj.auth;
+      delete obj.plugins;
 
       return obj;
     }
