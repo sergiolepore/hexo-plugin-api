@@ -37,7 +37,8 @@ module.exports.policies = {
     find: true,
     create: true,
     update: ['hasJsonWebToken'],
-    destroy: ['hasJsonWebToken']
+    destroy: ['hasJsonWebToken'],
+    current: ['hasJsonWebToken']
   }
 
   /***************************************************************************
