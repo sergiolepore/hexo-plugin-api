@@ -43,9 +43,11 @@ module.exports = function(req, res, next) {
 
       User.findOne(_iss[0]).exec(function(err, user){
         Jwt.findOne({token: token}, function(err, j){
-          if(j.revoked){
+          if (!j)
+            return res.forbidden('Unknown token');
+
+          if(j.revoked)
             return res.forbidden('This token has been revoked');
-          }
 
           req.session.authenticated = true;
           req.session.user = user;

@@ -29,8 +29,16 @@ module.exports.policies = {
   // '*': true,
 
   PingController: {
-    restricted: ['sessionAuth', 'hasJsonWebToken'],
+    restricted: ['hasJsonWebToken'],
     open: true
+  },
+
+  UserController: {
+    find: true,
+    create: true,
+    update: ['hasJsonWebToken'],
+    destroy: ['hasJsonWebToken'],
+    current: ['hasJsonWebToken']
   }
 
   /***************************************************************************
