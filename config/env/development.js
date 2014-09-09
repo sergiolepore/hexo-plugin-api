@@ -19,7 +19,7 @@ module.exports = {
 
   models: {
     connection: 'localDiskDb',
-    migrate: 'drop'
+    migrate: 'alter'
   },
 
   // override bootstrap timeout in order to wait for the fixtures to be fully 
