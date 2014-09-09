@@ -16,47 +16,57 @@ module.exports.bootstrap = function(continueSailsBoot) {
   // DO NOT LOAD DUMMY DATA ON PRODUCTION
   if (process.env.NODE_ENV === 'production') continueSailsBoot();
 
-  var demoUsers = require(__dirname + '/dummy_data/basic_fixture.json');
-  var demoPassword = 'demo1234';
+  User.count(function(err, num) {
+    if (err) {
+      console.log(err);
+      return continueSailsBoot();
+    }
 
-  sails.log.info('Loading test data into the database. Please wait...\n');
+    if (num > 0)
+      return continueSailsBoot();
 
-  async.eachSeries(demoUsers, function(userObj, next) {
-    User.create(userObj).exec(function(err, user) {
-      if (err) {
-        return next(err);
-      }
+    var demoUsers = require(__dirname + '/dummy_data/basic_fixture.json');
+    var demoPassword = 'demo1234';
 
-      var auth = {
-        email: user.email,
-        password: demoPassword
-      };
+    sails.log.info('Loading test data into the database. Please wait...\n');
 
-      sails.log.debug(auth);
-
-      waterlock.engine.attachAuthToUser(auth, user, function(err) {
+    async.eachSeries(demoUsers, function(userObj, next) {
+      User.create(userObj).exec(function(err, user) {
         if (err) {
           return next(err);
         }
 
-        user.save(function(err, user) {
+        var auth = {
+          email: user.email,
+          password: demoPassword
+        };
+
+        sails.log.debug(auth);
+
+        waterlock.engine.attachAuthToUser(auth, user, function(err) {
           if (err) {
             return next(err);
           }
 
-          return next();
+          user.save(function(err, user) {
+            if (err) {
+              return next(err);
+            }
+
+            return next();
+          });
         });
       });
+    }, function(err) {
+      if (err) {
+        sails.log.error(err);
+      }
+
+      console.log('\n');
+
+      // It's very important to trigger this callback method when you are finished
+      // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+      continueSailsBoot();
     });
-  }, function(err) {
-    if (err) {
-      sails.log.error(err);
-    }
-
-    console.log('\n');
-
-    // It's very important to trigger this callback method when you are finished
-    // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-    continueSailsBoot();
   });
 };
