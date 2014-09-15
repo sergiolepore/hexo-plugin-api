@@ -39,6 +39,28 @@ module.exports.policies = {
     update: ['hasJsonWebToken'],
     destroy: ['hasJsonWebToken'],
     current: ['hasJsonWebToken']
+  },
+
+  PluginController: {
+    find: true,
+    create: ['hasJsonWebToken'],
+    update: ['hasJsonWebToken'],
+    destroy: ['hasJsonWebToken']
+  },
+
+  PluginVersionController: {
+    '*': false
+  },
+
+  TagController: {
+    '*': false
+  },
+
+  PluginInstallationController: {
+    find: true,
+    create: true,
+    update: false,
+    destroy: false
   }
 
   /***************************************************************************

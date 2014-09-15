@@ -34,7 +34,7 @@ module.exports = {
 
     /**
      * Long description
-     * 
+     *
      * @type String
      * @example "Lorem ipsum dolor sit amet..."
      */
@@ -73,8 +73,18 @@ module.exports = {
     },
 
     /**
+     * Latest version.
+     *
+     * @type String
+     * @example "1.0.3"
+     */
+    lastVersion: {
+        type: 'string'
+    },
+
+    /**
      * Plugin Owner.
-     * 
+     *
      * @see User
      */
     user: {
@@ -82,19 +92,18 @@ module.exports = {
     },
 
     /**
-     * Plugin Tags.
-     * 
-     * @see Tag
+     * Plugin Keywords.
+     *
+     * @type Array
+     * @example ['emoji', 'image', 'video']
      */
-    tags: {
-      collection: 'Tag',
-      via: 'plugins',
-      dominant: true
+    keywords: {
+      type: 'array'
     },
 
     /**
      * Plugin versions.
-     * 
+     *
      * @see PluginVersion
      */
     versions: {

@@ -25,7 +25,8 @@
     "sails-mongo": "^0.10.4",
     "waterlock": "davidrivera/waterlock",
     "waterlock-local-auth": "0.0.5",
-    "async": "^0.9.0"
+    "async": "^0.9.0",
+    "silent-npm-registry-client": "0.0.1"
   },
   "scripts": {
     "start": "node app.js",

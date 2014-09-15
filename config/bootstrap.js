@@ -9,17 +9,16 @@
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
-var async = require('async');
-
 module.exports.bootstrap = function(continueSailsBoot) {
+  sails.async = require('async');
 
   // DO NOT LOAD DUMMY DATA ON PRODUCTION
   if (process.env.NODE_ENV === 'production') continueSailsBoot();
 
-  User.count(function(err, num) {
+  User.count().exec(function(err, num) {
     if (err) {
       console.log(err);
-      return continueSailsBoot();
+      return continueSailsBoot(err);
     }
 
     if (num > 0)
@@ -30,7 +29,7 @@ module.exports.bootstrap = function(continueSailsBoot) {
 
     sails.log.info('Loading test data into the database. Please wait...\n');
 
-    async.eachSeries(demoUsers, function(userObj, next) {
+    sails.async.eachSeries(demoUsers, function(userObj, next) {
       User.create(userObj).exec(function(err, user) {
         if (err) {
           return next(err);
