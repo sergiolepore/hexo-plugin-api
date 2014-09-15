@@ -1,10 +1,10 @@
 /**
- * UserController.js 
- * 
+ * UserController.js
+ *
  * @module      :: Controller
  * @description :: Provides the base user
  *                 actions used to make waterlock work.
- *                 
+ *
  * @docs        :: http://waterlock.ninja/documentation
  */
 
@@ -12,7 +12,7 @@ module.exports = require('waterlock').actions.user({
 
   /**
    * Overridden from default blueprint.
-   * 
+   *
    * POST /user -> UserController.create
    */
   create: function(req, res) {
@@ -26,37 +26,20 @@ module.exports = require('waterlock').actions.user({
       email: params.email
     };
 
-    User.create(userObj).exec(function(err, user) {
-      if (err) {
-        sails.log.error(err);
-
-        if (err.ValidationError) {
-          return res.badRequest(err);
-        } else {
-          return res.serverError(err);
-        }
-      }
+    User.create(userObj).exec(function(createErr, user) {
+      if (createErr)
+        return ErrorManager.handleError(createErr, res);
 
       req.session.user = user;
       req.session.authenticated = true;
 
-      waterlock.engine.attachAuthToUser(auth, user, function(err) {
-        if (err) {
-          sails.log.error(err);
+      waterlock.engine.attachAuthToUser(auth, user, function(waterlockErr) {
+        if (waterlockErr)
+          return ErrorManager.handleError(waterlockErr, res);
 
-          return res.serverError(err);
-        }
-
-        user.save(function(err, user) {
-          if (err) {
-            sails.log.error(err);
-
-            if (err.ValidationError) {
-              return res.badRequest(err);
-            } else {
-              return res.serverError(err);
-            }
-          }
+        user.save(function(saveErr, user) {
+          if (saveErr)
+            return ErrorManager.handleError(saveErr, res);
 
           sails.log.info('User login success');
 
@@ -78,16 +61,9 @@ module.exports = require('waterlock').actions.user({
     if (user.id != params.id) // if logged in user != user to edit
       return res.forbidden('You have no permissions to perform this action.');
 
-    User.update(params.id, params, function(err, user) {
-      if (err) {
-        sails.log.error(err);
-
-        if (err.ValidationError) {
-          return res.badRequest(err);
-        } else {
-          return res.serverError(err);
-        }
-      }
+    User.update(params.id, params, function(updateErr, user) {
+      if (updateErr)
+        return ErrorManager.handleError(updateErr, res);
 
       return res.ok(user);
     });
@@ -105,9 +81,9 @@ module.exports = require('waterlock').actions.user({
     if (user.id != params.id) // if logged in user != user to delete
       return res.forbidden('You have no permissions to perform this action.');
 
-    User.destroy({id: user.id}).exec(function(err) {
-      if (err)
-        return res.serverError(err);
+    User.destroy({id: user.id}).exec(function(destroyErr) {
+      if (destroyErr)
+        return ErrorManager.handleError(destroyErr, res);
 
       delete(req.session.user);
       req.session.authenticated = false;
