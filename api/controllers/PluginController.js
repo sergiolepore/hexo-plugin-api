@@ -118,5 +118,34 @@ module.exports = {
         }
       });
     });
-  }
+  },
+
+  /**
+   * Overridden from default blueprint.
+   *
+   * DELETE /plugin/:id -> PluginController.destroy
+   */
+  destroy: function(req, res) {
+    var params = req.params.all();
+    var user = req.session.user;
+
+    Plugin.findOne().where({
+      id: params.id
+    }).exec(function(findErr, plugin) {
+      if (findErr) {
+        return ErrorManager.handleError(err, res);
+      }
+
+      if (plugin.user != user.id)
+        return res.forbidden('You have no permissions to perform this action.');
+
+      plugin.destroy(function(destroyErr) {
+        if (destroyErr) {
+          return ErrorManager.handleError(err, res);
+        }
+
+        return res.ok('Successfully deleted');
+      })
+    });
+  },
 };
