@@ -23,9 +23,9 @@ module.exports = {
       packageName: params.packageName,
       user: user.id
     }).exec(function(findErr, plugin) {
-      if (findErr) {
+      if (findErr)
         return ErrorManager.handleError(findErr, res);
-      }
+
 
       if (!plugin) {
         var pluginObj = {
@@ -35,18 +35,18 @@ module.exports = {
         };
 
         Plugin.create(pluginObj).exec(function(createErr, plugin) {
-          if (createErr) {
+          if (createErr)
             return ErrorManager.handleError(createErr, res);
-          }
+
 
           // Update info and versions for the newly created plugin
           PluginService.updateVersionMetadata(plugin, function(updateMetadataErr, updatedPlugin) {
             if (updateMetadataErr) {
               if (updateMetadataErr.type == 'NPMREGNOTFOUND') { // not found on npm repo? destroy it.
                 plugin.destroy(function(destroyErr) {
-                  if (destroyErr) {
+                  if (destroyErr)
                     sails.log.error(destroyErr);
-                  }
+
                   return ErrorManager.handleError(updateMetadataErr, res);
                 });
               } else { // other errors
@@ -63,9 +63,9 @@ module.exports = {
           if (updateMetadataErr) {
             if (updateMetadataErr.type == 'NPMREGNOTFOUND') { // not found on npm repo? destroy it.
               plugin.destroy(function(destroyErr) {
-                if (destroyErr) {
+                if (destroyErr)
                   sails.log.error(destroyErr);
-                }
+
                 return ErrorManager.handleError(updateMetadataErr, res);
               });
             } else { // other errors
@@ -91,9 +91,8 @@ module.exports = {
     Plugin.findOne().where({
       id: params.id
     }).exec(function(findErr, plugin) {
-      if (findErr) {
+      if (findErr)
         return ErrorManager.handleError(findErr, res);
-      }
 
       if (plugin.user != user.id)
         return res.forbidden('You have no permissions to perform this action.');
@@ -105,9 +104,9 @@ module.exports = {
         if (updateMetadataErr) {
           if (updateMetadataErr.type == 'NPMREGNOTFOUND') { // not found on npm repo? destroy it.
             plugin.destroy(function(destroyErr) {
-              if (destroyErr) {
+              if (destroyErr)
                 sails.log.error(destroyErr);
-              }
+
               return ErrorManager.handleError(updateMetadataErr, res);
             });
           } else { // other errors
@@ -132,17 +131,15 @@ module.exports = {
     Plugin.findOne().where({
       id: params.id
     }).exec(function(findErr, plugin) {
-      if (findErr) {
+      if (findErr)
         return ErrorManager.handleError(err, res);
-      }
 
       if (plugin.user != user.id)
         return res.forbidden('You have no permissions to perform this action.');
 
       plugin.destroy(function(destroyErr) {
-        if (destroyErr) {
+        if (destroyErr)
           return ErrorManager.handleError(err, res);
-        }
 
         return res.ok('Successfully deleted');
       })
