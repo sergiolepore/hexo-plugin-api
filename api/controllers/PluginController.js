@@ -85,7 +85,38 @@ module.exports = {
    * PUT /plugin/:id -> PluginController.update
    */
   update: function(req, res) {
+    var params = req.params.all();
+    var user = req.session.user;
 
+    Plugin.findOne().where({
+      id: params.id
+    }).exec(function(findErr, plugin) {
+      if (findErr) {
+        return ErrorManager.handleError(findErr, res);
+      }
+
+      if (plugin.user != user.id)
+        return res.forbidden('You have no permissions to perform this action.');
+
+      //only the name can be manually changed, all other data comes from npm
+      plugin.name = params.name;
+
+      PluginService.updateVersionMetadata(plugin, function(updateMetadataErr, updatedPlugin) {
+        if (updateMetadataErr) {
+          if (updateMetadataErr.type == 'NPMREGNOTFOUND') { // not found on npm repo? destroy it.
+            plugin.destroy(function(destroyErr) {
+              if (destroyErr) {
+                sails.log.error(destroyErr);
+              }
+              return ErrorManager.handleError(updateMetadataErr, res);
+            });
+          } else { // other errors
+            return ErrorManager.handleError(updateMetadataErr, res);
+          }
+        } else {
+          return res.ok(updatedPlugin);
+        }
+      });
+    });
   }
 };
-
