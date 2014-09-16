@@ -9,7 +9,7 @@
 module.exports = {
 
   attributes: require('waterlock').models.resetToken.attributes({
-    
+
   }),
 
   beforeCreate: require('waterlock').models.resetToken.beforeCreate,

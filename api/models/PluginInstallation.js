@@ -11,21 +11,21 @@ module.exports = {
 
   /**
    * Linux platform identifier.
-   * 
+   *
    * @type String
    */
   PLATFORM_LIN: 'linux',
 
   /**
    * Mac platform identifier.
-   * 
+   *
    * @type String
    */
   PLATFORM_MAC: 'mac',
 
   /**
    * Windows platform identifier.
-   * 
+   *
    * @type String
    */
   PLATFORM_WIN: 'windows',
@@ -44,7 +44,7 @@ module.exports = {
 
     /**
      * Installation platform.
-     * 
+     *
      * @type String
      * @example "linux"
      */

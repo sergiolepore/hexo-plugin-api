@@ -16,24 +16,27 @@ var npmClient = new RegistryClient({
  * If {error} parameter is null = no errors occured during the operation.
  */
 module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted) {
-  npmClient.get('/'+plugin.packageName, function(npmErr, npmData) {
+  var packageUri = '/'+plugin.packageName;
+
+  npmClient.get(packageUri, function(npmErr, npmData) {
     if (npmErr) { // error while checking npmjs.org
       if (npmErr.code == 'E404') {
         npmErr = {
-          'error': 'E_INVALID',
-          'status': 400,
-          'summary': 'Package not found on npm registry',
-          'invalidAttributes': {
-            'packageName': [
+          error: 'E_INVALID',
+          status: 400,
+          summary: 'Package not found on npm registry',
+          invalidAttributes: {
+            packageName: [
               {
-                'value': plugin.packageName,
-                'message': "A package with name `asdf` was not found on the npm registry."
+                value: plugin.packageName,
+                message: 'A package with name `asdf` was not found on the npm registry.'
               }
             ]
           },
-          'type': 'NPMREGNOTFOUND'
-        }
+          type: 'NPMREGNOTFOUND'
+        };
       }
+
       return onUpdateVersionCompleted(npmErr);
     }
 
@@ -72,7 +75,7 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
             return next(countErr);
           }
 
-          if (count == 0) {
+          if (count === 0) {
             versionsToSave.push(versionNumber);
           }
 
@@ -93,7 +96,7 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
             number: versionNumber,
             time: npmData.time[versionNumber],
             hexoVersion: npmVersionData.hexo || ''
-          }
+          };
 
           plugin.versions.add(pluginVersionObj);
         });

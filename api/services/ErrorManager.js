@@ -9,9 +9,11 @@
 module.exports.handleError = function(err, response) {
   sails.log.error(err);
 
-  if (err.ValidationError || err.type == 'NPMREGNOTFOUND') {
-    return response.badRequest(err);
-  } else {
-    return response.serverError(err);
-  }
+  // if (err.ValidationError || err.type == 'NPMREGNOTFOUND') {
+  //   return response.badRequest(err);
+  // } else {
+  //   return response.serverError(err);
+  // }
+
+  return response.negotiate(err);
 };
