@@ -12,7 +12,7 @@ module.exports = {
   attributes: require('waterlock').models.user.attributes({
     /**
      * User name.
-     * 
+     *
      * @type String
      * @example CoolCoder123
      */
@@ -23,7 +23,7 @@ module.exports = {
 
     /**
      * User email.
-     * 
+     *
      * @type String
      */
     email: {
@@ -43,7 +43,7 @@ module.exports = {
 
     /**
      * npm profile URL.
-     * 
+     *
      * @type String
      * @example https://www.npmjs.org/~coolcoder123
      */
@@ -59,7 +59,7 @@ module.exports = {
 
     /**
      * User donations URL.
-     * 
+     *
      * @type String
      * @example "https://www.gittip.com/coolcoder123/"
      */
@@ -67,7 +67,7 @@ module.exports = {
 
     /**
      * User plugins.
-     * 
+     *
      * @see Plugin
      */
     plugins: {
@@ -77,7 +77,7 @@ module.exports = {
 
     /**
      * Record/instance method used to serialize an User object to JSON.
-     * 
+     *
      * @see http://sailsjs.org/#/documentation/concepts/ORM/Models.html?q=attribute-methods-(ie-record%2Finstance-methods)
      */
     toJSON: function() {
@@ -93,7 +93,7 @@ module.exports = {
       return obj;
     }
   }),
-  
+
   beforeCreate: require('waterlock').models.user.beforeCreate,
   beforeUpdate: require('waterlock').models.user.beforeUpdate
 };

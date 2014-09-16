@@ -9,9 +9,9 @@
 module.exports = {
 
   attributes: require('waterlock').models.auth.attributes({
-    
+
   }),
-  
+
   beforeCreate: require('waterlock').models.auth.beforeCreate,
   beforeUpdate: require('waterlock').models.auth.beforeUpdate
 };

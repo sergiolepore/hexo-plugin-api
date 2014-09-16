@@ -142,7 +142,7 @@ module.exports = {
           return ErrorManager.handleError(err, res);
 
         return res.ok('Successfully deleted');
-      })
+      });
     });
   },
 };

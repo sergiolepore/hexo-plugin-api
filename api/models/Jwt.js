@@ -9,6 +9,6 @@
 module.exports = {
 
   attributes: require('waterlock').models.jwt.attributes({
-    
+
   })
 };

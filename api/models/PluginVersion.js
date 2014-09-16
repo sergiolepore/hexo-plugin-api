@@ -22,7 +22,7 @@ module.exports = {
 
     /**
      * Creation time for this version.
-     * 
+     *
      * @type String
      * @example "2013-10-22T05:41:29.191Z"
      */
@@ -42,7 +42,7 @@ module.exports = {
 
     /**
      * Plugin which this version belongs to.
-     * 
+     *
      * @see Plugin
      */
     plugin: {
