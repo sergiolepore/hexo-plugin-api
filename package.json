@@ -26,7 +26,9 @@
     "waterlock": "davidrivera/waterlock",
     "waterlock-local-auth": "0.0.5",
     "async": "^0.9.0",
-    "silent-npm-registry-client": "0.0.1"
+    "silent-npm-registry-client": "0.0.1",
+    "lodash": "^2.4.1",
+    "pluralize": "^1.0.1"
   },
   "scripts": {
     "start": "node app.js",
