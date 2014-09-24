@@ -147,4 +147,15 @@ module.exports.blueprints = {
 
   // defaultLimit: 30
 
+  /****************************************************************************
+  *                                                                           *
+  * Specific configurations for the "sails-ember-blueprints" project.         *
+  * See: https://github.com/mphasize/sails-ember-blueprints                   *
+  *                                                                           *
+  ****************************************************************************/
+
+  ember: {
+    sideload: true
+  },
+
 };
