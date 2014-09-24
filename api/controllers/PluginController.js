@@ -26,7 +26,6 @@ module.exports = {
       if (findErr)
         return ErrorManager.handleError(findErr, res);
 
-
       if (!plugin) {
         var pluginObj = {
           name: params.name,
@@ -37,7 +36,6 @@ module.exports = {
         Plugin.create(pluginObj).exec(function(createErr, plugin) {
           if (createErr)
             return ErrorManager.handleError(createErr, res);
-
 
           // Update info and versions for the newly created plugin
           PluginService.updateVersionMetadata(plugin, function(updateMetadataErr, updatedPlugin) {
@@ -53,7 +51,7 @@ module.exports = {
                 return ErrorManager.handleError(updateMetadataErr, res);
               }
             } else {
-              return res.ok(updatedPlugin);
+              return res.emberOk(Plugin, updatedPlugin, {status:201});
             }
           });
         });
@@ -72,7 +70,7 @@ module.exports = {
               return ErrorManager.handleError(updateMetadataErr, res);
             }
           } else {
-            return res.ok(updatedPlugin);
+            return res.emberOk(Plugin, updatedPlugin, {status:201});
           }
         });
       }
@@ -113,7 +111,7 @@ module.exports = {
             return ErrorManager.handleError(updateMetadataErr, res);
           }
         } else {
-          return res.ok(updatedPlugin);
+          return res.emberOK(Plugin, updatedPlugin);
         }
       });
     });
@@ -141,7 +139,7 @@ module.exports = {
         if (destroyErr)
           return ErrorManager.handleError(err, res);
 
-        return res.ok('Successfully deleted');
+        return res.ok(null);
       });
     });
   },

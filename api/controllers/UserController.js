@@ -43,7 +43,7 @@ module.exports = require('waterlock').actions.user({
 
           sails.log.info('User login success');
 
-          return res.ok(user);
+          return res.emberOk(User, user, {status: 201});
         });
       });
     });
@@ -65,7 +65,7 @@ module.exports = require('waterlock').actions.user({
       if (updateErr)
         return ErrorManager.handleError(updateErr, res);
 
-      return res.ok(user);
+      return res.emberOk(User, user);
     });
   },
 
@@ -88,7 +88,7 @@ module.exports = require('waterlock').actions.user({
       delete(req.session.user);
       req.session.authenticated = false;
 
-      return res.ok('Successfully deleted');
+      return res.ok(null);
     });
   },
 
@@ -100,6 +100,6 @@ module.exports = require('waterlock').actions.user({
   current: function(req, res) {
     var user = req.session.user;
 
-    return res.ok(user);
+    return res.emberOk(User, user);
   }
 });
