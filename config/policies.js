@@ -52,10 +52,6 @@ module.exports.policies = {
     '*': false
   },
 
-  TagController: {
-    '*': false
-  },
-
   PluginInstallationController: {
     find: true,
     create: true,
