@@ -6,6 +6,8 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
+var emberUtils = require('../blueprints/_util/actionUtil.js');
+
 var controller = module.exports = {};
 
 /**
@@ -14,7 +16,7 @@ var controller = module.exports = {};
  * POST /plugin -> PluginController.create
  */
 controller.create = function (req, res) {
-  var params = req.params.all();
+  var params = emberUtils.parseValues(req, Plugin);
   var user = req.session.user;
 
   // Check if the plugins exists. If so, just update versions. Otherwise, create and then
@@ -42,7 +44,7 @@ controller.create = function (req, res) {
       });
     } else {
       // Plugin exists, update info and versions
-      return updatePluginMetadata(res, plugin);
+      return updatePluginMetadata(res, plugin, {status: 201});
     }
   });
 };
@@ -53,12 +55,11 @@ controller.create = function (req, res) {
  * PUT /plugin/:id -> PluginController.update
  */
 controller.update = function(req, res) {
-  var params = req.params.all();
+  var pk = emberUtils.requirePk(req);
+  var params = emberUtils.parseValues(req, Plugin);
   var user = req.session.user;
 
-  Plugin.findOne().where({
-    id: params.id
-  }).exec(function(findErr, plugin) {
+  Plugin.findOne(pk).exec(function(findErr, plugin) {
     if (findErr)
       return ErrorManager.handleError(findErr, res);
 
@@ -78,12 +79,10 @@ controller.update = function(req, res) {
  * DELETE /plugin/:id -> PluginController.destroy
  */
 controller.destroy = function(req, res) {
-  var params = req.params.all();
+  var pk = emberUtils.requirePk(req);
   var user = req.session.user;
 
-  Plugin.findOne().where({
-    id: params.id
-  }).exec(function(findErr, plugin) {
+  Plugin.findOne(pk).exec(function(findErr, plugin) {
     if (findErr)
       return ErrorManager.handleError(err, res);
 
@@ -106,7 +105,9 @@ controller.destroy = function(req, res) {
  * @param  Object res          The Sails Response object
  * @param  Object pluginObject A Plugin object, populated from the database
  */
-function updatePluginMetadata(res, pluginObject) {
+function updatePluginMetadata(res, pluginObject, options) {
+  options = options || {};
+
   PluginService.updateVersionMetadata(pluginObject, function(updateMetadataErr, updatedPlugin) {
     if (updateMetadataErr) {
       if (updateMetadataErr.type == 'NPMREGNOTFOUND') { // not found on npm repo? destroy it.
@@ -120,7 +121,7 @@ function updatePluginMetadata(res, pluginObject) {
         return ErrorManager.handleError(updateMetadataErr, res);
       }
     } else {
-      return res.emberOk(Plugin, updatedPlugin);
+      return res.emberOk(Plugin, updatedPlugin, options);
     }
   });
 }

@@ -8,6 +8,8 @@
  * @docs        :: http://waterlock.ninja/documentation
  */
 
+var emberUtils = require('../blueprints/_util/actionUtil.js');
+
 module.exports = require('waterlock').actions.user({
 
   /**
@@ -16,7 +18,7 @@ module.exports = require('waterlock').actions.user({
    * POST /user -> UserController.create
    */
   create: function(req, res) {
-    var params = req.params.all();
+    var params = emberUtils.parseValues(req, User);
     var auth = {
       email: params.email,
       password: params.password
@@ -55,13 +57,14 @@ module.exports = require('waterlock').actions.user({
    * PUT /user/:id -> UserController.update
    */
   update: function(req, res) {
-    var params = req.params.all();
+    var pk = emberUtils.requirePk(req);
+    var params = emberUtils.parseValues(req, User);
     var user = req.session.user;
 
-    if (user.id != params.id) // if logged in user != user to edit
+    if (user.id != pk) // if logged in user != user to edit
       return res.forbidden('You have no permissions to perform this action.');
 
-    User.update(params.id, params, function(updateErr, user) {
+    User.update(pk, params, function(updateErr, user) {
       if (updateErr)
         return ErrorManager.handleError(updateErr, res);
 
@@ -75,13 +78,13 @@ module.exports = require('waterlock').actions.user({
    * DELETE /user/:id -> UserController.destroy
    */
   destroy: function(req, res) {
-    var params = req.params.all();
+    var pk = actionUtil.requirePk(req);
     var user = req.session.user;
 
-    if (user.id != params.id) // if logged in user != user to delete
+    if (user.id != pk) // if logged in user != user to delete
       return res.forbidden('You have no permissions to perform this action.');
 
-    User.destroy({id: user.id}).exec(function(destroyErr) {
+    User.destroy(pk).exec(function(destroyErr) {
       if (destroyErr)
         return ErrorManager.handleError(destroyErr, res);
 
