@@ -8,11 +8,10 @@
  * @param {Object} Model
  * @param {Object} recordObject
  * @param {Object} options
- *          - sideloading. Defaults to false
  *          - status. Defaults to 200
  */
 
-var actionUtil = require( '../blueprints/_util/actionUtil' );
+var emberUtils = require( '../blueprints/_util/actionUtil.js' );
 
 module.exports = function emberOk(Model, recordObject, options) {
 
@@ -23,14 +22,14 @@ module.exports = function emberOk(Model, recordObject, options) {
 
   options = options || {};
   options.status = options.status || 200;
-  options.sideloading = options.sideloading || false;
+  options.sideloading = (sails.config.blueprints.ember && sails.config.blueprints.ember.sideload);
 
   sails.log.silly('res.emberOk() :: Sending ' + options.status);
 
   // Set status code
   res.status(options.status);
 
-  var data = actionUtil.emberizeJSON(
+  var data = emberUtils.emberizeJSON(
     Model,
     recordObject,
     req.options.associations,
