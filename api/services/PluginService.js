@@ -29,7 +29,7 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
             packageName: [
               {
                 value: plugin.packageName,
-                message: 'A package with name `asdf` was not found on the npm registry.'
+                message: 'A package with name `'+plugin.packageName+'` was not found on the npm registry.'
               }
             ]
           },
