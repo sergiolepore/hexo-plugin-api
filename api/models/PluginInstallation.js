@@ -31,16 +31,6 @@ module.exports = {
   PLATFORM_WIN: 'windows',
 
   attributes: {
-    /**
-     * Installation date.
-     *
-     * @type String
-     * @example "2014-08-26T03:25:42Z"
-     */
-    date: {
-      type: 'datetime',
-      required: true
-    },
 
     /**
      * Installation platform.
