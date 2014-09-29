@@ -57,7 +57,14 @@ module.exports.policies = {
     create: true,
     update: false,
     destroy: false
-  }
+  },
+
+  KeywordController: {
+    find: true,
+    create: false,
+    update: false,
+    destroy: false
+  },
 
   /***************************************************************************
   *                                                                          *

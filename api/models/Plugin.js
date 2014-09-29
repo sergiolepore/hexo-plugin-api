@@ -94,11 +94,12 @@ module.exports = {
     /**
      * Plugin Keywords.
      *
-     * @type Array
-     * @example ['emoji', 'image', 'video']
+     * @see Keyword
      */
     keywords: {
-      type: 'array'
+      collection: 'Keyword',
+      via: 'plugins',
+      dominant: true
     },
 
     /**
