@@ -1,3 +1,6 @@
+
+var emberUtils = require('../blueprints/_util/actionUtil.js');
+
 /**
  * PluginController
  *
@@ -5,9 +8,6 @@
  * @description :: Server-side logic for managing plugins
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-
-var emberUtils = require('../blueprints/_util/actionUtil.js');
-
 var controller = module.exports = {};
 
 /**

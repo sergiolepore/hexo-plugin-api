@@ -1,3 +1,6 @@
+
+var emberUtils = require('../blueprints/_util/actionUtil.js');
+
 /**
  * UserController.js
  *
@@ -7,9 +10,6 @@
  *
  * @docs        :: http://waterlock.ninja/documentation
  */
-
-var emberUtils = require('../blueprints/_util/actionUtil.js');
-
 module.exports = require('waterlock').actions.user({
 
   /**
