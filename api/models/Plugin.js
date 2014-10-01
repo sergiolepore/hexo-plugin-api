@@ -33,7 +33,17 @@ module.exports = {
     },
 
     /**
-     * Long description
+     * Plugin description.
+     *
+     * @type String
+     * @example "Lorem ipsum"
+     */
+    description: {
+      type: 'string'
+    },
+
+    /**
+     * Plugin readme
      *
      * @type String
      * @example "Lorem ipsum dolor sit amet..."
@@ -100,6 +110,18 @@ module.exports = {
       collection: 'Keyword',
       via: 'plugins',
       dominant: true
+    },
+
+    /**
+     * Stores all keywords in a single string.
+     * Due the limits of Waterline queries, we need to store all the keywords in
+     * a string to be able to query them via "contains".
+     *
+     * @type String
+     * @example "link checker error sitemap images youtube"
+     */
+    keywordCache: {
+      type: 'string'
     },
 
     /**
