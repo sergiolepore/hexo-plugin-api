@@ -54,6 +54,7 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
     // It will populate the Plugin object with its basic metadata, such as the readme, timestamps, websites.
     // On success, returns the npmData object so it can be reused by the next function.
     function extractBasicMetadata(npmData, onMetadataExtractionFinished) {
+      plugin.description = npmData.description;
       plugin.readme = npmData.readme;
       plugin.repositoryUrl = (npmData.repository && npmData.repository.url) ? (
         npmData.repository.url
@@ -90,7 +91,11 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
 
               Keyword.findOne().where({
                 name: keywordName
-              }).exec(function(err, keywordObject) {
+              })
+              // keywordObject.plugins array will be populated with a plugin if a keyword is found
+              // an is already related to the plugin
+              .populate('plugins', { id: plugin.id })
+              .exec(function(err, keywordObject) {
                 if (err)
                   return onFindKeywordFinished(err);
 
@@ -114,7 +119,8 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
             // Now we are sure that we have a keyword from the database (new or existing),
             // associate it to our plugin object and finish this task.
             function associateKeywordToPlugin(keywordObject, onAssociateKeywordToPluginFinished) {
-              plugin.keywords.add(keywordObject.id);
+              if (!keywordObject.plugins) // only create new relations
+                plugin.keywords.add(keywordObject.id);
 
               return onAssociateKeywordToPluginFinished(); // done
             }
@@ -129,6 +135,11 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
           // all keywords processed...
           if (err)
             return onProcessKeywordsFinished(err); // next on plugin waterfall
+
+          // this is needed because Waterline queries have limits.
+          // See Plugin.attributes.keywordCache docblock
+          if (npmData.keywords)
+            plugin.keywordCache = npmData.keywords.join(' ');
 
           return onProcessKeywordsFinished(null, npmData); // next on plugin waterfall
         });
