@@ -132,6 +132,16 @@ module.exports = {
     versions: {
       collection: 'PluginVersion',
       via: 'plugin'
+    },
+
+    /**
+     * Plugin installations.
+     *
+     * @see PluginInstallation
+     */
+    installations: {
+      collection: 'PluginInstallation',
+      via: 'plugin'
     }
   }
 };
