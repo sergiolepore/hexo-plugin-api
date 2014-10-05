@@ -78,7 +78,7 @@ module.exports = require('waterlock').actions.user({
    * DELETE /user/:id -> UserController.destroy
    */
   destroy: function(req, res) {
-    var pk = actionUtil.requirePk(req);
+    var pk = emberUtils.requirePk(req);
     var user = req.session.user;
 
     if (user.id != pk) // if logged in user != user to delete
