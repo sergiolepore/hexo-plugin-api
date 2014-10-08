@@ -22,7 +22,12 @@ module.exports = {
     migrate: 'alter'
   },
 
-  // override bootstrap timeout in order to wait for the fixtures to be fully 
+  // override bootstrap timeout in order to wait for the fixtures to be fully
   // loaded into the database
-  bootstrapTimeout: 10000
+  bootstrapTimeout: 10000,
+
+  cors: {
+    origin: 'http://localhost:4200'
+  },
+
 };
