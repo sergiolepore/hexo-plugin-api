@@ -155,7 +155,10 @@ module.exports.blueprints = {
   ****************************************************************************/
 
   ember: {
-    sideload: true
+    sideload: true,
+    blacklistedAssociations: {
+      user: ['attempts', 'auths', 'jwts']
+    }
   },
 
 };
