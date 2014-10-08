@@ -30,6 +30,10 @@ module.exports = {
     sideload = sideload || false;
 
     var plural = Array.isArray( records ) ? true : false;
+    var blacklistedAssociations = (sails.config.blueprints.ember && sails.config.blueprints.ember.blacklistedAssociations) ?
+      sails.config.blueprints.ember.blacklistedAssociations :
+      {}
+    ;
 
     var documentIdentifier = plural ? pluralize( model.identity ) : model.identity;
     var json = {};
@@ -40,10 +44,16 @@ module.exports = {
       // prepare for sideloading
       _.each( associations, function ( assoc ) {
         var assocName = assoc.type === "collection" ? pluralize( assoc.collection ) : pluralize( assoc.model );
+        var blacklistedAssociationsForModel = (blacklistedAssociations[model.identity]) ?
+          blacklistedAssociations[model.identity] :
+          []
+        ;
 
-        // initialize jsoning object
-        if ( !json.hasOwnProperty( assoc.alias ) ) {
-          json[ assocName ] = [];
+        if (blacklistedAssociationsForModel.indexOf(assocName) === -1) {
+          // initialize jsoning object
+          if ( !json.hasOwnProperty( assoc.alias ) ) {
+            json[ assocName ] = [];
+          }
         }
       } );
     }
@@ -53,14 +63,20 @@ module.exports = {
       record = _.create( {}, record.toJSON() );
       _.each( associations, function ( assoc ) {
         var assocName = assoc.type === "collection" ? pluralize( assoc.collection ) : pluralize( assoc.model );
+        var blacklistedAssociationsForRecord = (blacklistedAssociations[record.identity]) ?
+          blacklistedAssociations[record.identity] :
+          []
+        ;
 
-        if ( assoc.type === "collection" && record[ assoc.alias ] && record[ assoc.alias ].length > 0 ) {
-          if ( sideload ) json[ assocName ] = json[ assocName ].concat( record[ assoc.alias ] );
-          record[ assoc.alias ] = _.pluck( record[ assoc.alias ], 'id' );
-        }
-        if ( assoc.type === "model" && record[ assoc.alias ] ) {
-          if ( sideload ) json[ assocName ] = json[ assocName ].concat( record[ assoc.alias ] );
-          record[ assoc.alias ] = record[ assoc.alias ].id;
+        if (blacklistedAssociationsForRecord.indexOf(assocName) === -1) {
+          if ( assoc.type === "collection" && record[ assoc.alias ] && record[ assoc.alias ].length > 0 ) {
+            if ( sideload ) json[ assocName ] = json[ assocName ].concat( record[ assoc.alias ] );
+            record[ assoc.alias ] = _.pluck( record[ assoc.alias ], 'id' );
+          }
+          if ( assoc.type === "model" && record[ assoc.alias ] ) {
+            if ( sideload ) json[ assocName ] = json[ assocName ].concat( record[ assoc.alias ] );
+            record[ assoc.alias ] = record[ assoc.alias ].id;
+          }
         }
       } );
       return record;
