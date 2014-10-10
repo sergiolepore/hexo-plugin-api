@@ -145,7 +145,7 @@ module.exports.blueprints = {
   *                                                                           *
   ****************************************************************************/
 
-  defaultLimit: 30,
+  defaultLimit: 1,
 
   /****************************************************************************
   *                                                                           *
@@ -158,7 +158,8 @@ module.exports.blueprints = {
     sideload: true,
     blacklistedAssociations: {
       user: ['attempts', 'auths', 'jwts', 'plugins'],
-      keyword: ['plugins']
+      keyword: ['plugins'],
+      plugin: ['plugininstallations']
     }
   },
 
