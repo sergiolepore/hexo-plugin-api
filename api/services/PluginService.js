@@ -119,7 +119,7 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
             // Now we are sure that we have a keyword from the database (new or existing),
             // associate it to our plugin object and finish this task.
             function associateKeywordToPlugin(keywordObject, onAssociateKeywordToPluginFinished) {
-              if (!keywordObject.plugins) // only create new relations
+              if (!keywordObject.plugins.length) // only create new relations
                 plugin.keywords.add(keywordObject.id);
 
               return onAssociateKeywordToPluginFinished(); // done
