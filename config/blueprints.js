@@ -157,7 +157,8 @@ module.exports.blueprints = {
   ember: {
     sideload: true,
     blacklistedAssociations: {
-      user: ['attempts', 'auths', 'jwts']
+      user: ['attempts', 'auths', 'jwts', 'plugins'],
+      keyword: ['plugins']
     }
   },
 

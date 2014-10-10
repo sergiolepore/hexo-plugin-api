@@ -54,6 +54,8 @@ module.exports = {
           if ( !json.hasOwnProperty( assoc.alias ) ) {
             json[ assocName ] = [];
           }
+        } else {
+          delete json[assocName];
         }
       } );
     }
@@ -63,8 +65,8 @@ module.exports = {
       record = _.create( {}, record.toJSON() );
       _.each( associations, function ( assoc ) {
         var assocName = assoc.type === "collection" ? pluralize( assoc.collection ) : pluralize( assoc.model );
-        var blacklistedAssociationsForRecord = (blacklistedAssociations[record.identity]) ?
-          blacklistedAssociations[record.identity] :
+        var blacklistedAssociationsForRecord = (blacklistedAssociations[model.identity]) ?
+          blacklistedAssociations[model.identity] :
           []
         ;
 
@@ -77,6 +79,8 @@ module.exports = {
             if ( sideload ) json[ assocName ] = json[ assocName ].concat( record[ assoc.alias ] );
             record[ assoc.alias ] = record[ assoc.alias ].id;
           }
+        } else {
+          delete record[assocName];
         }
       } );
       return record;
