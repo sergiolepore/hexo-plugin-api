@@ -142,7 +142,18 @@ module.exports = {
     installations: {
       collection: 'PluginInstallation',
       via: 'plugin'
+    },
+
+    /**
+     * All installations in a single number. Useful to display
+     * without having to iterate the "installations" collection.
+     *
+     * @type Integer
+     * @example 128576
+     */
+    installationCount: {
+      type: 'integer',
+      defaultsTo: 0
     }
   }
 };
-
