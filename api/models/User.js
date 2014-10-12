@@ -11,14 +11,15 @@ module.exports = {
 
   attributes: require('waterlock').models.user.attributes({
     /**
-     * User name.
+     * Username.
      *
      * @type String
      * @example CoolCoder123
      */
-    name: {
+    username: {
       type: 'string',
-      required: true
+      required: true,
+      unique: true
     },
 
     /**
@@ -84,6 +85,7 @@ module.exports = {
       var obj = this.toObject();
 
       // inherited from waterlock
+      delete obj.email;
       delete obj.password;
       delete obj.attempts;
       delete obj.jsonWebTokens;

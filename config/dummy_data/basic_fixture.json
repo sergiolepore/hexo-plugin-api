@@ -1,6 +1,6 @@
 [
     {
-        "name": "William Hartnell",
+        "username": "WilliamHartnell",
         "email": "first_doctor@bbc.com",
         "githubProfile": "first_doctor",
         "npmProfile": "first_doctor",
@@ -36,7 +36,7 @@
         ]
     },
     {
-        "name": "Patrick Troughton",
+        "username": "PatrickTroughton",
         "email": "second_doctor@bbc.com",
         "githubProfile": "second_doctor",
         "npmProfile": "second_doctor",
@@ -72,7 +72,7 @@
         ]
     },
     {
-        "name": "Jon Pertwee",
+        "username": "JonPertwee",
         "email": "third_doctor@bbc.com",
         "githubProfile": "third_doctor",
         "npmProfile": "third_doctor",
@@ -108,7 +108,7 @@
         ]
     },
     {
-        "name": "Tom Baker",
+        "username": "TomBaker",
         "email": "fourth_doctor@bbc.com",
         "githubProfile": "fourth_doctor",
         "npmProfile": "fourth_doctor",
@@ -144,7 +144,7 @@
         ]
     },
     {
-        "name": "Peter Davison",
+        "username": "PeterDavison",
         "email": "fifth_doctor@bbc.com",
         "githubProfile": "fifth_doctor",
         "npmProfile": "fifth_doctor",
@@ -180,7 +180,7 @@
         ]
     },
     {
-        "name": "Colin Baker",
+        "username": "ColinBaker",
         "email": "sixth_doctor@bbc.com",
         "githubProfile": "sixth_doctor",
         "npmProfile": "sixth_doctor",
@@ -216,7 +216,7 @@
         ]
     },
     {
-        "name": "Sylvester McCoy",
+        "username": "SylvesterMcCoy",
         "email": "seventh_doctor@bbc.com",
         "githubProfile": "seventh_doctor",
         "npmProfile": "seventh_doctor",
@@ -252,7 +252,7 @@
         ]
     },
     {
-        "name": "Paul McGann",
+        "username": "PaulMcGann",
         "email": "eighth_doctor@bbc.com",
         "githubProfile": "eighth_doctor",
         "npmProfile": "eighth_doctor",
@@ -288,7 +288,7 @@
         ]
     },
     {
-        "name": "Christopher Eccleston",
+        "username": "ChristopherEccleston",
         "email": "ninth_doctor@bbc.com",
         "githubProfile": "ninth_doctor",
         "npmProfile": "ninth_doctor",
@@ -324,7 +324,7 @@
         ]
     },
     {
-        "name": "David Tennant",
+        "username": "DavidTennant",
         "email": "tenth_doctor@bbc.com",
         "githubProfile": "tenth_doctor",
         "npmProfile": "tenth_doctor",
@@ -360,7 +360,7 @@
         ]
     },
     {
-        "name": "Matt Smith",
+        "username": "MattSmith",
         "email": "eleventh_doctor@bbc.com",
         "githubProfile": "eleventh_doctor",
         "npmProfile": "eleventh_doctor",
@@ -396,7 +396,7 @@
         ]
     },
     {
-        "name": "Peter Capaldi",
+        "username": "PeterCapaldi",
         "email": "twelfth_doctor@bbc.com",
         "githubProfile": "twelfth_doctor",
         "npmProfile": "twelfth_doctor",
@@ -432,7 +432,7 @@
         ]
     },
     {
-        "name": "Sergio Lepore",
+        "username": "sergiolepore",
         "email": "sergio.d.lepore@gmail.com",
         "githubProfile": "sergiolepore",
         "npmProfile": "sergiolepore",

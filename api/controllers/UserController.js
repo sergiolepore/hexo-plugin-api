@@ -24,7 +24,7 @@ module.exports = require('waterlock').actions.user({
       password: params.password
     };
     var userObj = {
-      name: params.name,
+      username: params.username,
       email: params.email
     };
 
