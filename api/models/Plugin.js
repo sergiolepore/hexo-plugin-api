@@ -154,6 +154,19 @@ module.exports = {
     installationCount: {
       type: 'integer',
       defaultsTo: 0
+    },
+
+    /**
+     * Record/instance method used to serialize an User object to JSON.
+     *
+     * @see http://sailsjs.org/#/documentation/concepts/ORM/Models.html?q=attribute-methods-(ie-record%2Finstance-methods)
+     */
+    toJSON: function() {
+      var obj = this.toObject();
+
+      delete obj.installations;
+
+      return obj;
     }
   }
 };
