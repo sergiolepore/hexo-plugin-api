@@ -29,7 +29,8 @@
     "silent-npm-registry-client": "0.0.1",
     "lodash": "^2.4.1",
     "pluralize": "^1.0.1",
-    "sails-ember-blueprints": "^0.1.4"
+    "sails-ember-blueprints": "^0.1.4",
+    "underscore": "^1.7.0"
   },
   "scripts": {
     "start": "node app.js",

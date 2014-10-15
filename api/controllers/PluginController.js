@@ -1,4 +1,5 @@
 
+var _ = require('underscore');
 var emberUtils = require('../blueprints/_util/actionUtil.js');
 
 /**
@@ -96,6 +97,67 @@ controller.destroy = function(req, res) {
       return res.ok(null);
     });
   });
+};
+
+controller.trending = function(req,res) {
+  var where = emberUtils.parseCriteria(req);
+  var limit = emberUtils.parseLimit(req);
+  var skip = emberUtils.parseSkip(req);
+
+  sails.async.waterfall([
+
+    function findInstallations(onFindInstallationsFinished) {
+      PluginInstallation
+        .find()
+        .where(where)
+        .populate('plugin')
+        .exec(onFindInstallationsFinished)
+      ;
+    },
+
+    function groupByPlugin(installations, onGroupByPluginFinished) {
+      var groupedInstalls = _.groupBy(installations, function(installation) {
+        var plugin = installation.plugin;
+
+        if (plugin === undefined)
+          return "undef";
+
+        return plugin.id;
+      });
+
+      if (groupedInstalls.undef !== undefined)
+        delete groupedInstalls.undef;
+
+      return onGroupByPluginFinished(null, groupedInstalls);
+    },
+
+    function countInstallations(groupedInstalls, onCountInstallationsFinished) {
+      var pluginInstalls = [];
+
+      for (var pluginId in groupedInstalls) {
+        var count = groupedInstalls[pluginId].length;
+
+        pluginInstalls.push({plugin: pluginId, count: count });
+      }
+
+      pluginInstalls = _.sortBy(pluginInstalls, 'count').reverse().slice(skip, (skip+limit));
+
+      return onCountInstallationsFinished(null, pluginInstalls);
+    },
+
+    function findPlugins(pluginInstalls, onFindPluginsFinished) {
+      sails.async.mapSeries(pluginInstalls, function(pluginData, next) {
+        Plugin.findOne(pluginData.plugin).exec(next);
+      }, onFindPluginsFinished);
+    }
+
+  ], function waterfallFinished(err, result) {
+    if (err)
+      return ErrorManager.handleError(err);
+
+    return res.emberOk(Plugin, result);
+  });
+
 };
 
 /**
