@@ -42,6 +42,7 @@ module.exports.bootstrap = function(continueSailsBoot) {
 
         sails.log.debug(auth);
 
+        // TODO: replace waterlock
         waterlock.engine.attachAuthToUser(auth, user, function(err) {
           if (err) {
             return next(err);

@@ -23,14 +23,13 @@
     "sails": "~0.10.5",
     "sails-disk": "~0.10.0",
     "sails-mongo": "^0.10.4",
-    "waterlock": "davidrivera/waterlock",
-    "waterlock-local-auth": "0.0.5",
     "async": "^0.9.0",
     "silent-npm-registry-client": "0.0.1",
     "lodash": "^2.4.1",
     "pluralize": "^1.0.1",
     "sails-ember-blueprints": "^0.1.4",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "jsonwebtoken": "^1.1.2"
   },
   "scripts": {
     "start": "node app.js",

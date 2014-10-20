@@ -1,15 +1,15 @@
 /**
- * User
- *
- * @module      :: Model
- * @description :: This is the base user model
- * @docs        :: http://waterlock.ninja/documentation
- */
+* User.js
+*
+* @module      :: Model
+* @description :: Describes a user.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
 
 module.exports = {
   schema: true,
 
-  attributes: require('waterlock').models.user.attributes({
+  attributes: {
     /**
      * Username.
      *
@@ -84,18 +84,13 @@ module.exports = {
     toJSON: function() {
       var obj = this.toObject();
 
-      // inherited from waterlock
       delete obj.email;
       delete obj.password;
-      delete obj.attempts;
-      delete obj.jsonWebTokens;
-      delete obj.auth;
       delete obj.plugins;
 
       return obj;
     }
-  }),
+  },
 
-  beforeCreate: require('waterlock').models.user.beforeCreate,
-  beforeUpdate: require('waterlock').models.user.beforeUpdate
+  // TODO: "before" hooks to encrypt password
 };

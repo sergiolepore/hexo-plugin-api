@@ -1,13 +1,10 @@
 /**
  * AuthController
  *
- * @module      :: Controller
- * @description	:: Provides the base authentication
- *                 actions used to make waterlock work.
- *
- * @docs        :: http://waterlock.ninja/documentation
+ * @description :: Server-side logic for managing authentication
+ * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-module.exports = require('waterlock').waterlocked({
+module.exports = {
 
-});
+};

@@ -2,15 +2,12 @@
 var emberUtils = require('../blueprints/_util/actionUtil.js');
 
 /**
- * UserController.js
+ * UserController
  *
- * @module      :: Controller
- * @description :: Provides the base user
- *                 actions used to make waterlock work.
- *
- * @docs        :: http://waterlock.ninja/documentation
+ * @description :: Server-side logic for managing Users
+ * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-module.exports = require('waterlock').actions.user({
+module.exports = {
 
   /**
    * Overridden from default blueprint.
@@ -35,6 +32,7 @@ module.exports = require('waterlock').actions.user({
       req.session.user = user;
       req.session.authenticated = true;
 
+      // TODO: remove waterlock
       waterlock.engine.attachAuthToUser(auth, user, function(waterlockErr) {
         if (waterlockErr)
           return ErrorManager.handleError(waterlockErr, res);
@@ -105,4 +103,4 @@ module.exports = require('waterlock').actions.user({
 
     return res.emberOk(User, user);
   }
-});
+};

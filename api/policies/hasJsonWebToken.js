@@ -1,4 +1,4 @@
-'use strict';
+// TODO: replace EVERYTHING. No more Waterlock
 
 var jwt = require('waterlock').jwt;
 var config = require('waterlock').config;
@@ -19,13 +19,13 @@ module.exports = function(req, res, next) {
     try{
       // decode the token
       var _token = jwt.decode(token, config.jsonWebTokens.secret);
-      
+
       // set the time of the request
       var _reqTime = Date.now();
 
       // If token is expired
       if(_token.exp <= _reqTime){
-        return res.forbidden('Your token is expired.');        
+        return res.forbidden('Your token is expired.');
       }
 
       // If token is early
@@ -55,7 +55,7 @@ module.exports = function(req, res, next) {
           var use = {jsonWebToken: j.id, remoteAddress: req.connection.remoteAddress};
           Use.create(use);
 
-          return next(); 
+          return next();
         });
       });
     } catch(err){
