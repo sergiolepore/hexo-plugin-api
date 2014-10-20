@@ -1,67 +1,59 @@
-// TODO: replace EVERYTHING. No more Waterlock
-
-var jwt = require('waterlock').jwt;
-var config = require('waterlock').config;
-var _utils = require('waterlock')._utils;
-
 /**
  * hasJsonWebToken
  *
  * @module      :: Policy
- * @description :: Assumes that your request has an jwt;
+ * @description :: Simple policy to check if the request has a JWT and if it's
+ *              	 valid.
+ * @docs        :: http://sailsjs.org/#!documentation/policies
  *
- * @docs        :: http://waterlock.ninja/documentation
  */
 module.exports = function(req, res, next) {
-  var token = _utils.allParams(req).access_token;
+  var token;
 
-  if(token){
-    try{
-      // decode the token
-      var _token = jwt.decode(token, config.jsonWebTokens.secret);
+  if (req.headers && req.headers.authorization) {
+    var parts = req.headers.authorization.split(' ');
 
-      // set the time of the request
-      var _reqTime = Date.now();
+    if (parts.length == 2) {
+      var scheme      = parts[0];
+      var credentials = parts[1];
 
-      // If token is expired
-      if(_token.exp <= _reqTime){
-        return res.forbidden('Your token is expired.');
-      }
+      if (/^Bearer$/i.test(scheme))
+        token = credentials;
 
-      // If token is early
-      if(_reqTime <= _token.nbf){
-        return res.forbidden('This token is early.');
-      }
-
-      // If audience doesn't match
-      if(config.jsonWebTokens.audience !== _token.aud){
-        return res.forbidden('This token cannot be accepted for this domain.');
-      }
-
-      // deserialize the token iss
-      var _iss = _token.iss.split('|');
-
-      User.findOne(_iss[0]).exec(function(err, user){
-        Jwt.findOne({token: token}, function(err, j){
-          if (!j)
-            return res.forbidden('Unknown token');
-
-          if(j.revoked)
-            return res.forbidden('This token has been revoked');
-
-          req.session.authenticated = true;
-          req.session.user = user;
-
-          var use = {jsonWebToken: j.id, remoteAddress: req.connection.remoteAddress};
-          Use.create(use);
-
-          return next();
-        });
-      });
-    } catch(err){
-      return res.forbidden('Error processing your access token');
+    } else {
+      return res.unauthorized('Format is Authorization: Bearer [token]');
     }
-  }else{
-    return res.forbidden('Access token not present.');
+  } else if (req.param('token')) {
+    token = req.param('token');
+    // We delete the token from param to not mess with blueprints
+    delete req.query.token;
+  } else {
+    return res.unauthorized('No Authorization header was found');
   }
+
+  SailsTokenAuth.verifyToken(token, function(err, token) {
+    if (err)
+      return res.unauthorized('The token is not valid');
+
+    var userId     = token.iss;
+    var expiration = token.exp;
+
+    if (expiration <= Date.now())
+      return res.unauthorized('Access token has expired');
+
+    req.token = token;
+
+    User.findOne(userId).exec(function(findErr, user) {
+      if (findErr)
+        return ErrorManager.handleError(findErr, res);
+
+      if(!user)
+        return res.unauthorized('No user found');
+
+      req.session.authenticated = true;
+      req.session.user          = user;
+
+      next();
+    });
+  });
 };

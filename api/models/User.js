@@ -1,3 +1,6 @@
+
+var bcrypt = require('bcrypt');
+
 /**
 * User.js
 *
@@ -32,6 +35,17 @@ module.exports = {
       email: true,
       required: true,
       unique: true
+    },
+
+    /**
+     * Encrypted user password
+     *
+     * @type String
+     */
+    password: {
+      type: 'string',
+      required: true,
+      minLength: 6
     },
 
     /**
@@ -92,5 +106,33 @@ module.exports = {
     }
   },
 
-  // TODO: "before" hooks to encrypt password
+  beforeCreate: function(values, next) {
+    var password = values.password;
+
+    bcrypt.hash(password, 10, function(err, encryptedPassword) {
+      if (err)
+        return next(err);
+
+      values.password = encryptedPassword;
+
+      next();
+    });
+  },
+
+  beforeUpdate: function(values, next) {
+    var password = values.password;
+
+    if (!password)
+      return next();
+
+    bcrypt.hash(password, 10, function(err, encryptedPassword) {
+      if (err)
+        return next(err);
+
+      values.password = encryptedPassword;
+      
+      next();
+    });
+  }
+
 };

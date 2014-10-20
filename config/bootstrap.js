@@ -30,10 +30,11 @@ module.exports.bootstrap = function(continueSailsBoot) {
     sails.log.info('Loading test data into the database. Please wait...\n');
 
     sails.async.eachSeries(demoUsers, function(userObj, next) {
+      userObj.password = demoPassword;
+
       User.create(userObj).exec(function(err, user) {
-        if (err) {
+        if (err)
           return next(err);
-        }
 
         var auth = {
           email: user.email,
@@ -42,25 +43,11 @@ module.exports.bootstrap = function(continueSailsBoot) {
 
         sails.log.debug(auth);
 
-        // TODO: replace waterlock
-        waterlock.engine.attachAuthToUser(auth, user, function(err) {
-          if (err) {
-            return next(err);
-          }
-
-          user.save(function(err, user) {
-            if (err) {
-              return next(err);
-            }
-
-            return next();
-          });
-        });
+        return next();
       });
     }, function(err) {
-      if (err) {
+      if (err)
         sails.log.error(err);
-      }
 
       console.log('\n');
 

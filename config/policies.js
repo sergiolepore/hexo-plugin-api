@@ -33,11 +33,19 @@ module.exports.policies = {
     open: true
   },
 
+  SessionController: {
+    find: false,
+    create: false,
+    update: false,
+    destroy: false,
+    authenticate: true
+  },
+
   UserController: {
     find: true,
     create: true,
-    update: ['hasJsonWebToken'],
-    destroy: ['hasJsonWebToken'],
+    update: ['hasJsonWebToken', 'canManipulateUser'],
+    destroy: ['hasJsonWebToken', 'canManipulateUser'],
     current: ['hasJsonWebToken']
   },
 

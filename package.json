@@ -29,7 +29,9 @@
     "pluralize": "^1.0.1",
     "sails-ember-blueprints": "^0.1.4",
     "underscore": "^1.7.0",
-    "jsonwebtoken": "^1.1.2"
+    "jsonwebtoken": "^1.1.2",
+    "bcrypt": "^0.8.0",
+    "moment": "^2.8.3"
   },
   "scripts": {
     "start": "node app.js",
