@@ -75,11 +75,14 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
     // plugin.
     // On success, returns the npmData object to the next function.
     function processKeywords(npmData, onProcessKeywordsFinished) {
-      if (!npmData.keywords) {
+      var latest = npmData['dist-tags'].latest;
+      latest = npmData.versions[latest];
+
+      if (!latest.keywords) {
         return onProcessKeywordsFinished(null, npmData);
       } else {
         // iterate over each keyword and perform database operations, all async
-        sails.async.each(npmData.keywords, function(keywordName, nextKeyword) {
+        sails.async.each(latest.keywords, function(keywordName, nextKeyword) {
           sails.async.waterfall([
 
             // Keyword Waterfall 1.
