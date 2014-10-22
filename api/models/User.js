@@ -130,7 +130,7 @@ module.exports = {
         return next(err);
 
       values.password = encryptedPassword;
-      
+
       next();
     });
   }

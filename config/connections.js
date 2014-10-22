@@ -24,16 +24,16 @@ module.exports.connections = {
   /***************************************************************************
   *                                                                          *
   * MongoDB storage for DEVELOPMENT                                          *
-  * 																																				 *
-  * 																																				 *
+  *                                                                          *
+  *                                                                          *
   * IMPORTANT: DO NOT CHANGE THE CONNECTION. This connection is used on      *
   *            dev environments. It should be enough to debug and develop    *
   *            stuff. If you REALLY need to change it, override it on your   *
   *            local.js file.                                                *
-  *            																															 *
+  *                                                                          *
   * ProTip: How to change the default database.                              *
-  * 				                                                                 *
-  * 			  $ DB_URL="mongodb://my-ip/database" sails lift                   *
+  *                                                                          *
+  *         $ DB_URL="mongodb://my-ip/database" sails lift                   *
   *                                                                          *
   ***************************************************************************/
   mongoDevelopment: {

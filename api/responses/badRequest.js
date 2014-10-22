@@ -54,4 +54,3 @@ module.exports = function badRequest(data, options) {
   });
 
 };
-
