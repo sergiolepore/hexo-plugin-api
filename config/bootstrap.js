@@ -36,14 +36,27 @@ module.exports.bootstrap = function(continueSailsBoot) {
         if (err)
           return next(err);
 
-        var auth = {
+        var info = {
+          id: user.id,
           email: user.email,
           password: demoPassword
         };
 
-        sails.log.debug(auth);
+        sails.log.debug(info);
 
-        return next();
+        Plugin.update({
+          user: user.id
+        }, {
+          hpmMeta: {
+            token: user.id,
+            hexoVersion: "2.8.2"
+          }
+        }).exec(function(updErr, plugins) {
+          if (updErr)
+            return next(err);
+
+          return next();
+        });
       });
     }, function(err) {
       if (err)

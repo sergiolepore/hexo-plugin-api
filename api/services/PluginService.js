@@ -155,7 +155,7 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
     // On success, it will return nothing and pluginWatefallFinished will be invoked.
     function processVersions(npmData, onProcessVersionsFinished) {
       if (!npmData.versions) { // weird, no versions?
-        return onProcessVersionsFinished(null);
+        return onProcessVersionsFinished(null, npmData);
       } else {
         var npmVersions = Object.keys(npmData.versions); // version numbers
         var versionsToSave = []; // temporal storage
@@ -195,9 +195,32 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
             plugin.versions.add(pluginVersionObj);
           });
 
-          return onProcessVersionsFinished(); // done
+          return onProcessVersionsFinished(null, npmData); // done
         });
       }
+    },
+
+    // Plugin Waterfall 5
+    // This function extracts the hpm metadata from the npm data and
+    // stores in the plugin object.
+    function retrieveHpmMetadata(npmData, onRetrieveHpmMetadataFinished) {
+      var latest  = npmData['dist-tags'].latest;
+      latest      = npmData.versions[latest];
+
+      if (!latest)
+        return onRetrieveHpmMetadataFinished();
+
+      // just for development, generate hpm metadata
+      if (!latest.hpm && process.env.NODE_ENV !== 'production') {
+        latest.hpm = {
+          token:        plugin.user,
+          hexoVersion:  '2.8.2'
+        };
+      }
+
+      plugin.hpmMeta = latest.hpm;
+
+      return onRetrieveHpmMetadataFinished();
     }
 
   ], function pluginWaterfallFinished(err) {
