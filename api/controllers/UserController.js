@@ -10,6 +10,27 @@ var emberUtils = require('../blueprints/_util/actionUtil.js');
 var UserController = module.exports = {};
 
 /**
+ * Overridden from default blueprint.
+ *
+ * PUT /users/:id -> UserController.update
+ */
+UserController.update = function(req, res) {
+  var pk      = emberUtils.requirePk(req);
+  var params  = emberUtils.parseValues(req, User);
+
+  delete params.email; // can't change email
+  delete params.username; // can't change username
+  delete params.password; // this is not the method to change the password
+
+  User.update({id:pk}, params).exec(function(updateErr, user) {
+    if (updateErr)
+      return ErrorManager.handleError(updateErr, res);
+
+    return res.emberOk(User, user);
+  });
+};
+
+/**
  * Returns the logged in user.
  *
  * GET /user/current
