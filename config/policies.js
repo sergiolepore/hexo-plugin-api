@@ -28,50 +28,51 @@ module.exports.policies = {
 
   // '*': true,
 
-  PingController: {
-    restricted: ['hasJsonWebToken'],
-    open: true
+  PingController : {
+    restricted : ['hasJsonWebToken'],
+    open       : true
   },
 
-  SessionController: {
-    find: false,
-    create: false,
-    update: false,
-    destroy: false,
-    authenticate: true
+  SessionController : {
+    find          : false,
+    create        : false,
+    update        : false,
+    destroy       : false,
+    authenticate  : true
   },
 
-  UserController: {
-    find: true,
-    create: true,
-    update: ['hasJsonWebToken', 'canManipulateUser'],
-    destroy: ['hasJsonWebToken', 'canManipulateUser'],
-    current: ['hasJsonWebToken']
+  UserController : {
+    find      : true,
+    create    : true,
+    update    : ['hasJsonWebToken', 'canManipulateUser'],
+    destroy   : ['hasJsonWebToken', 'canManipulateUser'],
+    current   : ['hasJsonWebToken'],
+    password  : ['hasJsonWebToken']
   },
 
-  PluginController: {
-    find: true,
-    create: ['hasJsonWebToken'],
-    update: ['hasJsonWebToken'],
-    destroy: ['hasJsonWebToken']
+  PluginController : {
+    find    : true,
+    create  : ['hasJsonWebToken'],
+    update  : ['hasJsonWebToken'],
+    destroy : ['hasJsonWebToken']
   },
 
-  PluginVersionController: {
-    '*': false
+  PluginVersionController : {
+    '*' : false
   },
 
-  PluginInstallationController: {
-    find: true,
-    create: true,
-    update: false,
-    destroy: false
+  PluginInstallationController : {
+    find    : true,
+    create  : true,
+    update  : false,
+    destroy : false
   },
 
-  KeywordController: {
-    find: true,
-    create: false,
-    update: false,
-    destroy: false
+  KeywordController : {
+    find    : true,
+    create  : false,
+    update  : false,
+    destroy : false
   },
 
   /***************************************************************************

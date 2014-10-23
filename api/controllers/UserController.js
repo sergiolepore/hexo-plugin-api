@@ -40,3 +40,22 @@ UserController.current = function(req, res) {
 
   return res.emberOk(User, user);
 };
+
+/**
+ * Changes the password of the current logged in user.
+ *
+ * PUT /users/password
+ */
+UserController.password = function(req, res) {
+  var newPassword = req.params.all().password;
+  var user        = req.session.user;
+
+  user.password = newPassword;
+
+  user.save(function(saveErr, user) {
+    if (saveErr)
+      return ErrorManager.handleError(saveErr, res);
+
+    return res.emberOk(User, user);
+  });
+};

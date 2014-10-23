@@ -28,4 +28,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'post /sessions/authenticate' : 'SessionController.authenticate',
+  'put /users/password'         : 'UserController.password',
+
 };
