@@ -1,4 +1,5 @@
 
+var bcrypt     = require('bcrypt');
 var emberUtils = require('../blueprints/_util/actionUtil.js');
 
 /**
@@ -47,15 +48,28 @@ UserController.current = function(req, res) {
  * PUT /users/password
  */
 UserController.password = function(req, res) {
-  var newPassword = req.params.all().password;
+  var params      = req.params.all();
+  var oldPassword = params.oldPassword;
+  var newPassword = params.newPassword;
   var user        = req.session.user;
 
-  user.password = newPassword;
+  if (!oldPassword || !newPassword)
+    return res.unauthorized('Invalid password');
 
-  user.save(function(saveErr, user) {
-    if (saveErr)
-      return ErrorManager.handleError(saveErr, res);
+  bcrypt.compare(oldPassword, user.password, function(bcrypErr, isValid) {
+    if (bcrypErr)
+      return ErrorManager.handleError(bcrypErr, res);
 
-    return res.emberOk(User, user);
+    if (!isValid)
+      return res.unauthorized('Invalid password');
+
+    user.password = newPassword;
+
+    user.save(function(saveErr, user) {
+      if (saveErr)
+        return ErrorManager.handleError(saveErr, res);
+
+      return res.emberOk(User, user);
+    });
   });
 };
