@@ -73,3 +73,37 @@ UserController.password = function(req, res) {
     });
   });
 };
+
+/**
+ * Resets the user password, given a valid reset token.
+ *
+ * PUT /users/resetPassword
+ */
+UserController.resetPassword = function(req, res) {
+  var params   = req.params.all();
+  var token    = params.token;
+  var password = params.password;
+
+  if (!token || !password)
+    return res.unauthorized('Invalid data');
+
+  User.findOne({
+    resetToken: token
+  }).exec(function(findErr, user) {
+    if (findErr)
+      return ErrorManager.handleError(findErr, res);
+
+    if (!user)
+      return res.unauthorized('Invalid reset token');
+
+    user.password = password;
+    user.resetToken = '';
+
+    user.save(function(saveErr, user) {
+      if (saveErr)
+        return ErrorManager.handleError(saveErr, res);
+
+      res.emberOk(User, user);
+    });
+  });
+};

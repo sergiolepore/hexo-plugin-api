@@ -91,6 +91,13 @@ module.exports = {
     },
 
     /**
+     * TOken used to validate a reset password operation
+     *
+     * @type {String}
+     */
+    resetToken: 'string',
+
+    /**
      * Record/instance method used to serialize an User object to JSON.
      *
      * @see http://sailsjs.org/#/documentation/concepts/ORM/Models.html?q=attribute-methods-(ie-record%2Finstance-methods)

@@ -1,6 +1,7 @@
 
 var bcrypt = require('bcrypt');
 var moment = require('moment');
+var crypto = require('crypto');
 
 /**
  * SessionController
@@ -48,5 +49,81 @@ SessionController.authenticate = function(req, res) {
         token: token
       });
     });
+  });
+};
+
+SessionController.resetPasswordEmail = function(req, res) {
+  var params = req.params.all();
+  var email  = params.email;
+
+  sails.async.waterfall([
+
+    function findUser(onFindUserFinished) {
+      User.findOne({
+        email: email
+      }).exec(function(findErr, user) {
+        if (findErr)
+          return onFindUserFinished(findErr);
+
+        if (!user) {
+          return onFindUserFinished({
+            error: 'E_NOTFOUND',
+            status: 404,
+            summary: 'Invalid email'
+          });
+        }
+
+        return onFindUserFinished(null, user);
+      });
+    },
+
+    function generateResetToken(user, onGenerateResetTokenFinished) {
+      if (user.resetToken) {
+        return onGenerateResetTokenFinished(null, user);
+      } else {
+        crypto.randomBytes(48, function(cryptoErr, buffer) {
+          if (cryptoErr)
+            return onGenerateResetTokenFinished(cryptoErr);
+
+          user.resetToken = buffer.toString('hex');
+
+          user.save(onGenerateResetTokenFinished);
+        });
+      }
+    },
+
+    function renderTemplate(user, onRenderTemplateFinished) {
+      var frontendUrl = sails.config.siteapp.baseUrl;
+      var resetPath   = sails.config.siteapp.resetPasswordPath;
+      resetPath       = resetPath.replace(':token', user.resetToken);
+
+      res.render('email/reset', {
+        url : frontendUrl + resetPath
+      }, function(renderErr, html) {
+        if (renderErr)
+          return onRenderTemplateFinished(renderErr);
+
+        return onRenderTemplateFinished(null, user, html);
+      });
+    },
+
+    function sendEmail(user, template, onSendEmailFinished) {
+      Email.send({
+        to : [{
+          name  : user.username,
+          email : user.email,
+        }],
+        subject       : 'hpmjs.org | Password Reset',
+        html          : template,
+        track_opens   : false,
+        track_clicks  : false
+      }, onSendEmailFinished);
+    }
+
+  ], function onWaterfallFinished(err, result) {
+    if (err)
+      return ErrorManager.handleError(err, res);
+
+    res.ok();
   });
 };

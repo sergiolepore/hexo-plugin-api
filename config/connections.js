@@ -36,9 +36,9 @@ module.exports.connections = {
   *         $ DB_URL="mongodb://my-ip/database" sails lift                   *
   *                                                                          *
   ***************************************************************************/
-  mongoDevelopment: {
-    adapter: 'sails-mongo',
-    url: process.env.DB_URL || 'mongodb://127.0.0.1/hpmjs'
+  mongoDevelopment : {
+    adapter : 'sails-mongo',
+    url     : process.env.DB_URL || 'mongodb://127.0.0.1/hpmjs'
   },
 
   /***************************************************************************
@@ -50,9 +50,9 @@ module.exports.connections = {
   *            production environment.                                       *
   *                                                                          *
   ***************************************************************************/
-  mongoProduction: {
-    adapter: 'sails-mongo',
-    url: process.env.DB_URL
+  mongoProduction : {
+    adapter : 'sails-mongo',
+    url     : process.env.DB_URL
   }
 
 };
