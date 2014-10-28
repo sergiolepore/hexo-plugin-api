@@ -218,7 +218,7 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
         };
       }
 
-      plugin.hpmMeta = latest.hpm;
+      plugin.hpmmetadata = latest.hpm;
 
       return onRetrieveHpmMetadataFinished();
     }

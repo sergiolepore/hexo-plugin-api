@@ -167,7 +167,7 @@ module.exports = {
      *
      * @type Object
      */
-    hpmMeta: {
+    hpmmetadata: {
       type: 'json'
     },
 
