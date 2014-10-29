@@ -221,6 +221,36 @@ module.exports.updateVersionMetadata = function(plugin, onUpdateVersionCompleted
       plugin.hpmmetadata = latest.hpm;
 
       return onRetrieveHpmMetadataFinished();
+    },
+
+    // Plugin Waterfall 6
+    // Checks if the token stored on hpmmetadata is valid.
+    // If not, return an error (the current user is not the owner and can not
+    // register the plugin for itself).
+    function checkForValidToken(onCheckForValidTokenFinished) {
+      var userToken = plugin.user; // the token is the user ID.
+      var pkgToken  = plugin.hpmmetadata.token;
+
+      if (userToken.toString() !== pkgToken.toString()) {
+        var error = {
+          error: 'E_INVALID',
+          status: 403,
+          summary: 'Plugin token does not match with the user token',
+          invalidAttributes: {
+            hpmmetadata: [
+              {
+                value: pkgToken,
+                message: 'The plugin token `%ptok%` does not match the user token `%utok%`.'.replace('%ptok%', pkgToken).replace('%utok%', userToken)
+              }
+            ]
+          },
+          type: 'TOKENMISMATCH'
+        };
+
+        return onCheckForValidTokenFinished(error);
+      }
+
+      return onCheckForValidTokenFinished(); // everything's ok
     }
 
   ], function pluginWaterfallFinished(err) {

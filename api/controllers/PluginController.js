@@ -172,7 +172,12 @@ function updatePluginMetadata(res, pluginObject, options) {
 
   PluginService.updateVersionMetadata(pluginObject, function(updateMetadataErr, updatedPlugin) {
     if (updateMetadataErr) {
-      if (updateMetadataErr.type == 'NPMREGNOTFOUND') { // not found on npm repo? destroy it.
+      var errorType = updateMetadataErr.type;
+
+      // destroy the plugin if:
+      //  - not found on npm repository
+      //  - the validation token does not match (forbidden registration)
+      if (errorType === 'NPMREGNOTFOUND' || errorType === 'TOKENMISMATCH') {
         pluginObject.destroy(function(destroyErr) {
           if (destroyErr)
             sails.log.error(destroyErr);
