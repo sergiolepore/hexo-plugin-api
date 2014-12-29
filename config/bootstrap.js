@@ -47,7 +47,7 @@ module.exports.bootstrap = function(continueSailsBoot) {
         Plugin.update({
           user: user.id
         }, {
-          hpmMeta: {
+          hpmmetadata: {
             token: user.id,
             hexoVersion: "2.8.2"
           }

@@ -107,7 +107,7 @@ module.exports = {
 
       delete obj.email;
       delete obj.password;
-      // delete obj.plugins;
+      delete obj.resetToken;
 
       return obj;
     }

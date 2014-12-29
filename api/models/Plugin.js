@@ -180,6 +180,8 @@ module.exports = {
       var obj = this.toObject();
 
       delete obj.installations;
+      delete obj.createdAt;
+      delete obj.updatedAt;
 
       return obj;
     }
